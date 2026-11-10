@@ -124,6 +124,43 @@ const SITE = {
     },
   ],
 
+  /* ---------- NEWS & ACHIEVEMENTS ----------
+     date: "2026-09-29" (day shown) or "2026-09" (month only)
+     tag:  for example "Recognition", "Student achievement", "Event"
+     photos: upload images to the photos folder on GitHub, then list them here
+
+     TEMPLATE (copy this):
+     {
+       date: "2026-12-01",
+       tag: "Event",
+       title: "Short headline",
+       text: "Two or three sentences about what happened.",
+       photos: [ { src: "photos/my-photo.jpg", caption: "What the photo shows" } ],
+     },
+  */
+  news: [
+    {
+      date: "2026-09-29",
+      tag: "Student achievement",
+      title: "My thesis students won the DUET Innovation & Research Poster Presentation 2026",
+      text: "My undergraduate thesis group was declared Winner of the DUET Innovation & Research Poster Presentation 2026, held at the DUET Farewell Ceremony and Rag Day 2026 and organized by Oikantik’21 with the Directorate of Research and Extension, DUET. A proud supervisor moment!",
+      photos: [
+        { src: "photos/poster-winners.jpg", caption: "My thesis students with the Winner certificate and crest" },
+        { src: "photos/poster-certificate.jpg", caption: "Certificate of Achievement and Winner crest, DUET Innovation & Research Poster Presentation 2026" },
+      ],
+    },
+    {
+      date: "2026-09",
+      tag: "Recognition",
+      title: "Certificate of Excellence in Research, DUET",
+      text: "Awarded the Certificate of Excellence in Research by Dhaka University of Engineering & Technology (DUET), Gazipur, during the 23rd DUET Day celebrations, in recognition of outstanding contributions to academic research through publications in Q1-indexed journals from July 2025 to June 2026.",
+      photos: [
+        { src: "photos/excellence-stage.jpg", caption: "Award ceremony at the 23rd DUET Day 2026" },
+        { src: "photos/excellence-certificate.jpg", caption: "Certificate of Excellence in Research, signed by the Vice-Chancellor and the Director (Research & Extension)" },
+      ],
+    },
+  ],
+
   /* ---------- METHODS ---------- */
   methods: {
     computational: [
@@ -298,7 +335,24 @@ const SITE = {
     { when: "2015", title: "HSC, Science",          place: "Government Science College" },
   ],
 
-  /* ---------- COURSES TAUGHT ---------- */
+  /* ---------- COURSES TAUGHT ----------
+     Each course opens its own page when clicked.
+     Course numbers ending in an odd digit are shown as Theory, even as Sessional.
+     To fill a course page, expand its line like this (all extra fields are optional):
+
+     { code: "MME 3103", title: "Electronic, Magnetic and Optical Materials", years: "2024, 2025",
+       credit: "3.0",
+       level: "Level 3, Term 1",
+       description: "A short paragraph about the course.",
+       objectives: ["First learning outcome", "Second learning outcome"],
+       topics: ["Topic one", "Topic two"],
+       books: ["Author, Book title, Publisher, Year"],
+       lectures: [
+         { title: "Lecture 1: Introduction", date: "January 2027", link: "slides/MME3103-L1.pdf" },
+         { title: "Lecture 2: Dielectrics", link: "https://drive.google.com/..." },
+       ],
+     },
+  */
   courses: [
     { code: "MME 2006", title: "Computer Programming",                       years: "2024–2025" },
     { code: "MME 2303", title: "Heat and Mass Transfer",                     years: "2024–2025" },
@@ -317,6 +371,7 @@ const SITE = {
 
   /* ---------- HONORS & AWARDS ---------- */
   awards: [
+    { title: "Certificate of Excellence in Research", by: "DUET, 23rd DUET Day", year: "2026" },
     { title: "PG Fellowship",                              by: "BUET",                               year: "2022" },
     { title: "National Science and Technology Fellowship", by: "Ministry of Science and Technology", year: "2021" },
     { title: "Dean’s List Award",                          by: "BUET",                               year: "2017" },
