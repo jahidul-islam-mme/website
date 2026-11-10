@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Md. Jahidul Islam – Materials & Metallurgical Engineering, DUET</title>
+<meta name="description" content="Md. Jahidul Islam, Assistant Professor of Materials and Metallurgical Engineering at DUET, Gazipur. Lead-free perovskites, solar cell simulation, nanomaterials and green corrosion inhibition.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F7FA; --surface:#FFFFFF; --ink:#13233B; --muted:#56657C;
+  --line:#DCE3EC; --primary:#1D4F8F; --primary-soft:#E6EEF8;
+  --gold:#C98A12; --gold-bar:#D99A1E; --gold-soft:#FBF1DC;
+  --serif:"Spectral", Georgia, "Times New Roman", serif;
+  --sans:"Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1520; --surface:#142030; --ink:#E5ECF5; --muted:#9AA9BE;
+    --line:#24344A; --primary:#7FB0EC; --primary-soft:#182940;
+    --gold:#F0B940; --gold-bar:#E3A92E; --gold-soft:#2A2312; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1520; --surface:#142030; --ink:#E5ECF5; --muted:#9AA9BE;
+  --line:#24344A; --primary:#7FB0EC; --primary-soft:#182940;
+  --gold:#F0B940; --gold-bar:#E3A92E; --gold-soft:#2A2312; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important; transition:none!important} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.6}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--surface)}
+img,svg{max-width:100%}
+a{color:var(--primary)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold); outline-offset:3px; border-radius:4px}
+h1,h2,h3,h4{font-family:var(--serif); font-weight:500; line-height:1.2; margin:0}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+
+/* Header */
+header{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:var(--surface); border-bottom:1px solid var(--line)}
+.bar{display:flex; align-items:center; justify-content:space-between; height:64px}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); font-family:var(--serif); font-size:1.15rem; font-weight:600}
+.brand svg{width:30px; height:30px}
+nav ul{list-style:none; display:flex; gap:2px; margin:0; padding:0}
+nav a{display:block; padding:8px 11px; text-decoration:none; color:var(--muted); font-size:.94rem; border-radius:6px}
+nav a:hover{color:var(--ink); background:var(--primary-soft)}
+.menu-btn{display:none; background:none; border:1px solid var(--line); color:var(--ink); padding:7px 12px; border-radius:6px; font:inherit; font-size:.95rem; cursor:pointer}
+@media (max-width:900px){
+  .menu-btn{display:block}
+  nav{position:absolute; left:0; right:0; top:64px; background:var(--surface); border-bottom:1px solid var(--line); display:none}
+  nav.open{display:block}
+  nav ul{flex-direction:column; padding:8px 16px 16px}
+  nav a{padding:12px}
+}
+
+/* Hero */
+.hero{padding:72px 0 64px; border-bottom:1px solid var(--line)}
+.hero-grid{display:grid; grid-template-columns:1.25fr 1fr; gap:48px; align-items:center}
+.hero h1{font-size:clamp(2.3rem,5vw,3.6rem); letter-spacing:-.01em}
+.role{margin:14px 0 0; font-size:1.1rem; color:var(--muted)}
+.role strong{color:var(--ink); font-weight:600}
+.lede{margin:24px 0 0; font-family:var(--serif); font-size:1.3rem; line-height:1.5; max-width:36ch}
+.actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:30px}
+.btn{display:inline-block; padding:11px 18px; border-radius:6px; text-decoration:none; font-weight:500; font-size:.95rem; border:1px solid var(--line); color:var(--ink); background:var(--surface)}
+.btn:hover{border-color:var(--primary)}
+.btn.primary{background:var(--primary); border-color:var(--primary); color:var(--surface)}
+.now{display:flex; gap:12px; align-items:flex-start; margin:28px 0 0; padding:14px 16px; max-width:52ch; border-left:3px solid var(--gold-bar); background:var(--surface); border-radius:0 6px 6px 0; font-size:.98rem}
+.now a{font-weight:500; white-space:nowrap}
+.lattice{width:100%; height:auto; display:block}
+.lattice-cap{font-size:.85rem; color:var(--muted); text-align:center; margin-top:6px}
+@media (max-width:860px){ .hero-grid{grid-template-columns:1fr} .lattice-box{max-width:360px; margin:0 auto} .hero{padding:48px 0} }
+
+/* Sections */
+section{padding:72px 0; border-bottom:1px solid var(--line)}
+.sec-head{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:32px}
+.sec-head h2{font-size:clamp(1.8rem,3.5vw,2.4rem)}
+.sec-head p{margin:0; color:var(--muted); max-width:52ch}
+.sub{font-size:1.4rem; margin:0 0 6px}
+.sub-note{margin:0 0 22px; color:var(--muted); max-width:62ch}
+
+/* About */
+.about-grid{display:grid; grid-template-columns:220px 1fr; gap:48px; align-items:start}
+.portrait{aspect-ratio:1; border-radius:50%; background:#fff; border:4px solid var(--surface); box-shadow:0 0 0 1px var(--line); overflow:hidden}
+.portrait img{width:100%; height:100%; object-fit:cover; display:block}
+.about-text p{margin:0 0 1em; max-width:68ch; font-family:var(--serif); font-size:1.12rem; line-height:1.7}
+.facts{display:grid; grid-template-columns:repeat(3,1fr); margin:28px 0 0; border-top:1px solid var(--line)}
+.facts div{padding:16px 16px 0 0}
+.facts dt{font-size:.85rem; color:var(--muted)}
+.facts dd{margin:2px 0 0; font-weight:500}
+@media (max-width:760px){ .about-grid{grid-template-columns:1fr} .portrait{max-width:200px} .facts{grid-template-columns:1fr} }
+
+/* Research themes */
+.themes{display:grid; grid-template-columns:repeat(3,1fr); border-top:2px solid var(--ink)}
+.theme{padding:26px 26px 8px 0}
+.theme + .theme{padding-left:26px; border-left:1px solid var(--line)}
+.theme-fig{margin:0 0 18px; padding:10px 8px 4px; background:var(--surface); border:1px solid var(--line); border-radius:8px}
+.theme-fig svg{display:block; width:100%; height:auto}
+.theme h3{font-size:1.45rem}
+.theme .intro{margin:8px 0 18px; color:var(--muted); font-size:.96rem}
+.topic{padding:16px 0; border-top:1px solid var(--line)}
+.topic h4{font-family:var(--sans); font-size:1rem; font-weight:600; margin-bottom:4px}
+.topic p{margin:0; color:var(--muted); font-size:.95rem}
+.topic.funded h4::after{content:"Funded"; margin-left:8px; font-size:.75rem; font-weight:500; padding:1px 8px; border-radius:20px; background:var(--gold-soft); color:var(--ink); vertical-align:2px}
+@media (max-width:900px){
+  .themes{grid-template-columns:1fr}
+  .theme,.theme + .theme{padding:24px 0 8px; border-left:none}
+  .theme + .theme{border-top:1px solid var(--line)}
+}
+
+/* Efficiency chart */
+.chart-block{margin-top:56px}
+.chart{position:relative; margin-top:8px}
+.row{display:grid; grid-template-columns:190px 1fr; gap:16px; align-items:center; padding:9px 0}
+.row .lab{font-weight:600; font-size:.95rem; line-height:1.3}
+.row .lab small{display:block; font-weight:400; color:var(--muted); font-size:.82rem}
+.track{position:relative; height:30px}
+.barfill{position:absolute; left:0; top:0; bottom:0; border-radius:0 4px 4px 0; display:flex; align-items:center; justify-content:flex-end; padding-right:10px; font-family:var(--serif); font-weight:600; font-size:1rem; color:#1a1305}
+.barfill.slme{background:var(--gold-bar)}
+.barfill.device{background:var(--primary); color:var(--surface)}
+.sq{position:absolute; top:-6px; bottom:-6px; border-left:2px dashed var(--ink); opacity:.55; pointer-events:none}
+.axis{display:grid; grid-template-columns:190px 1fr; gap:16px; font-size:.8rem; color:var(--muted)}
+.axis .ticks{position:relative; height:22px; border-top:1px solid var(--line)}
+.axis .ticks span{position:absolute; top:4px; transform:translateX(-50%)}
+.legend{display:flex; flex-wrap:wrap; gap:18px; margin-top:14px; font-size:.88rem; color:var(--muted)}
+.legend i{display:inline-block; width:12px; height:12px; border-radius:2px; margin-right:6px; vertical-align:-1px}
+.legend .dash{width:0; height:14px; border-left:2px dashed var(--ink); border-radius:0; margin-right:8px; opacity:.6}
+@media (max-width:640px){
+  .row,.axis{grid-template-columns:1fr; gap:4px}
+  .axis > span:first-child{display:none}
+}
+
+/* Methods */
+.methods{display:grid; grid-template-columns:1fr 1fr; gap:56px; margin-top:56px}
+.methods dl{margin:0}
+.methods .m{display:grid; grid-template-columns:200px 1fr; gap:16px; padding:11px 0; border-top:1px solid var(--line)}
+.methods dt{font-weight:600}
+.methods dd{margin:0; color:var(--muted)}
+@media (max-width:760px){ .methods{grid-template-columns:1fr; gap:36px} .methods .m{grid-template-columns:1fr; gap:2px} }
+
+/* Projects */
+.project{background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--gold-bar); border-radius:0 10px 10px 0; padding:32px}
+.project + .project{margin-top:24px}
+.p-top{display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:12px; font-size:.9rem; color:var(--muted)}
+.status{padding:2px 10px; border-radius:20px; background:var(--gold-soft); color:var(--ink); font-weight:500}
+.project h3{font-size:clamp(1.35rem,2.6vw,1.75rem); max-width:40ch}
+.p-meta{display:grid; grid-template-columns:repeat(3,1fr); gap:0 24px; margin:24px 0 0}
+.p-meta div{padding:12px 0; border-top:1px solid var(--line)}
+.p-meta dt{font-size:.83rem; color:var(--muted)}
+.p-meta dd{margin:2px 0 0; font-weight:500}
+.p-body{display:grid; grid-template-columns:1.1fr 1fr; gap:40px; margin-top:28px}
+.p-body p{margin:0; font-family:var(--serif); font-size:1.08rem; line-height:1.7}
+.p-body h4{font-family:var(--sans); font-size:.95rem; font-weight:600; margin-bottom:8px}
+.goals{margin:0; padding-left:20px}
+.goals li{margin-bottom:6px; color:var(--muted)}
+.gantt{margin-top:32px}
+.gantt h4{font-family:var(--sans); font-size:.95rem; font-weight:600; margin-bottom:10px}
+.g-row{display:grid; grid-template-columns:260px 1fr; gap:16px; align-items:center; padding:5px 0; font-size:.9rem}
+.g-track{display:grid; grid-template-columns:repeat(12,1fr); height:16px; background:repeating-linear-gradient(to right, transparent 0, transparent calc(100%/12 - 1px), var(--line) calc(100%/12 - 1px), var(--line) calc(100%/12))}
+.g-bar{background:var(--primary); border-radius:3px; height:16px}
+.g-axis{display:grid; grid-template-columns:260px 1fr; gap:16px; font-size:.78rem; color:var(--muted); margin-top:4px}
+.g-axis .months{display:grid; grid-template-columns:repeat(12,1fr); text-align:center}
+@media (max-width:860px){
+  .p-meta{grid-template-columns:1fr 1fr}
+  .p-body{grid-template-columns:1fr; gap:28px}
+  .g-row,.g-axis{grid-template-columns:1fr; gap:4px}
+  .g-axis > span:first-child{display:none}
+  .project{padding:24px}
+}
+@media (max-width:520px){ .p-meta{grid-template-columns:1fr} }
+
+/* Publications */
+.tabs{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:20px}
+.tab{font:inherit; font-size:.95rem; padding:8px 14px; border-radius:6px; border:1px solid var(--line); background:var(--surface); color:var(--muted); cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:var(--bg)}
+.pubs{list-style:none; margin:0; padding:0}
+.pub{display:grid; grid-template-columns:86px 1fr; gap:20px; padding:22px 0; border-top:1px solid var(--line)}
+.pub .yr{font-family:var(--serif); font-size:1.4rem; color:var(--gold)}
+.pub h3{font-family:var(--sans); font-size:1.05rem; font-weight:600; line-height:1.45}
+.pub h3 a{color:var(--ink); text-decoration:none}
+.pub h3 a:hover{color:var(--primary); text-decoration:underline}
+.pub .au{margin:6px 0 0; color:var(--muted); font-size:.93rem}
+.pub .au b{color:var(--ink); font-weight:600}
+.pub .ven{margin:4px 0 0; font-size:.93rem; font-style:italic}
+.kind{display:inline-block; font-style:normal; font-size:.78rem; padding:1px 8px; border-radius:20px; background:var(--gold-soft); color:var(--ink); margin-left:6px; vertical-align:1px}
+.pub .sum{margin:10px 0 0; font-size:.96rem; max-width:72ch}
+.pub .find b{font-family:var(--sans); font-size:.9rem; font-weight:600}
+.pub .find{margin:8px 0 0; padding-left:12px; border-left:2px solid var(--gold-bar); font-family:var(--serif); font-size:1rem; max-width:72ch}
+.more{margin-top:24px}
+@media (max-width:600px){ .pub{grid-template-columns:1fr; gap:4px} }
+
+/* Timeline */
+.two{display:grid; grid-template-columns:1fr 1fr; gap:56px}
+.two h3{font-size:1.4rem; margin-bottom:18px}
+.tl{list-style:none; margin:0; padding:0; border-left:2px solid var(--line)}
+.tl li{position:relative; padding:0 0 24px 24px}
+.tl li::before{content:""; position:absolute; left:-7px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--bg); border:2px solid var(--primary)}
+.tl li.now-item::before{background:var(--gold-bar); border-color:var(--gold-bar)}
+.tl .when{font-size:.88rem; color:var(--muted)}
+.tl .what{font-weight:600}
+.tl .where{color:var(--muted); font-size:.95rem}
+@media (max-width:760px){ .two{grid-template-columns:1fr; gap:36px} }
+
+/* Teaching & awards */
+.courses,.awards{list-style:none; margin:0; padding:0}
+.courses li{display:grid; grid-template-columns:92px 1fr; gap:12px; padding:14px 0; border-top:1px solid var(--line)}
+.courses .code{font-weight:600; color:var(--primary)}
+.courses li.c-group{display:block; padding:22px 0 8px; border-top:none; font-family:var(--serif); font-size:1.1rem; color:var(--muted)}
+.courses li.c-group:first-child{padding-top:0}
+.courses .yrs,.awards .by{display:block; font-size:.88rem; color:var(--muted)}
+.awards li{display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-top:1px solid var(--line)}
+.awards .y{font-family:var(--serif); color:var(--gold); white-space:nowrap}
+
+/* Contact */
+.contact{background:var(--surface)}
+.contact-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:48px}
+.contact h2{font-size:clamp(1.8rem,3.5vw,2.4rem)}
+.contact .big{display:inline-block; margin-top:18px; font-family:var(--serif); font-size:clamp(1.2rem,2.6vw,1.6rem); word-break:break-all}
+.contact dl{margin:0}
+.contact dt{font-size:.85rem; color:var(--muted); margin-top:14px}
+.contact dt:first-child{margin-top:0}
+.contact dd{margin:2px 0 0}
+@media (max-width:760px){ .contact-grid{grid-template-columns:1fr; gap:28px} }
+
+footer{padding:28px 0; color:var(--muted); font-size:.9rem}
+footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px}
+</style>
+</head>
+<body>
+<!-- =========================================================
+     Do not edit this file. To change your website content,
+     edit content.js instead.
+     ========================================================= -->
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="5" cy="5" r="3" fill="#D99A1E"/><circle cx="27" cy="5" r="3" fill="#D99A1E"/><circle cx="5" cy="27" r="3" fill="#D99A1E"/><circle cx="27" cy="27" r="3" fill="#D99A1E"/><circle cx="16" cy="16" r="4" fill="currentColor"/></svg>
+      <span data-f="name"></span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#career">Career</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 data-f="name"></h1>
+        <p class="role"><strong data-f="position"></strong>, <span data-f="department"></span><br><span data-f="university"></span></p>
+        <p class="lede" data-f="tagline"></p>
+        <div class="actions" id="hero-actions"></div>
+        <p class="now" id="now"></p>
+      </div>
+      <figure class="lattice-box" style="margin:0">
+        <svg class="lattice" viewBox="0 0 400 380" role="img" aria-labelledby="latt-t">
+          <title id="latt-t">Cubic perovskite ABX₃ unit cell</title>
+          <g fill="none" stroke="var(--line)" stroke-width="2">
+            <path d="M80 120 L230 120 L230 300 L80 300 Z"/>
+            <path d="M170 60 L320 60 L320 240 L170 240 Z" stroke-dasharray="5 5"/>
+            <path d="M80 120 L170 60 M230 120 L320 60 M230 300 L320 240 M80 300 L170 240" />
+          </g>
+          <g stroke="var(--primary)" stroke-width="2" fill="var(--primary)" fill-opacity=".08">
+            <path d="M200 80 L155 180 L245 180 Z"/>
+            <path d="M200 80 L245 180 L270 150 Z" fill-opacity=".16"/>
+            <path d="M200 280 L155 180 L245 180 Z" fill-opacity=".12"/>
+            <path d="M200 280 L245 180 L270 150 Z" fill-opacity=".2"/>
+            <path d="M200 80 L130 210 L200 280 M130 210 L155 180 M130 210 L245 180" fill="none" stroke-opacity=".45"/>
+          </g>
+          <g fill="var(--gold-bar)">
+            <circle cx="80" cy="120" r="14"/><circle cx="230" cy="120" r="14"/>
+            <circle cx="80" cy="300" r="14"/><circle cx="230" cy="300" r="14"/>
+            <circle cx="170" cy="60" r="11" opacity=".75"/><circle cx="320" cy="60" r="11" opacity=".75"/>
+            <circle cx="170" cy="240" r="11" opacity=".75"/><circle cx="320" cy="240" r="11" opacity=".75"/>
+          </g>
+          <g fill="var(--surface)" stroke="var(--primary)" stroke-width="2.5">
+            <circle cx="200" cy="80" r="9"/><circle cx="200" cy="280" r="9"/>
+            <circle cx="155" cy="180" r="9"/><circle cx="245" cy="180" r="9"/>
+            <circle cx="270" cy="150" r="8"/><circle cx="130" cy="210" r="8"/>
+          </g>
+          <circle cx="200" cy="180" r="12" fill="var(--primary)"/>
+          <g font-family="Public Sans, system-ui, sans-serif" font-size="13" fill="var(--muted)">
+            <circle cx="40" cy="352" r="6" fill="var(--gold-bar)"/><text x="52" y="357">A cation</text>
+            <circle cx="150" cy="352" r="6" fill="var(--primary)"/><text x="162" y="357">B cation</text>
+            <circle cx="260" cy="352" r="6" fill="var(--surface)" stroke="var(--primary)" stroke-width="2"/><text x="272" y="357">X anion</text>
+          </g>
+        </svg>
+        <figcaption class="lattice-cap">The ABX₃ perovskite structure behind next-generation solar cells</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="portrait"><img id="photo" alt=""></div>
+      <div class="about-text">
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.4rem); margin-bottom:20px">About</h2>
+        <div id="about-text"></div>
+        <dl class="facts" id="facts"></dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Research</h2>
+        <p>Three connected themes, from atomic-scale design to working devices and protected surfaces.</p>
+      </div>
+      <div class="themes" id="themes"></div>
+
+      <div class="chart-block" id="chart-block">
+        <h3 class="sub">How efficient could these solar materials be?</h3>
+        <p class="sub-note">Efficiencies predicted in my papers. Gold bars are the theoretical maximum of the material (SLME); blue bars are complete solar cells simulated in SCAPS-1D.</p>
+        <div class="chart" id="chart"></div>
+        <div class="axis"><span></span><div class="ticks" id="ticks"></div></div>
+        <div class="legend">
+          <span><i style="background:var(--gold-bar)"></i>Material limit (SLME)</span>
+          <span><i style="background:var(--primary)"></i>Simulated solar cell (SCAPS-1D)</span>
+          <span><i class="dash"></i>Shockley–Queisser limit for a single junction (~33%)</span>
+        </div>
+      </div>
+
+      <div class="methods" id="methods">
+        <div><h3 class="sub">Computational methods</h3><dl id="m-comp"></dl></div>
+        <div><h3 class="sub">Experimental methods</h3><dl id="m-exp"></dl></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Funded research</h2>
+        <p>Projects I lead or contribute to.</p>
+      </div>
+      <div id="project-list"></div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Publications</h2>
+        <p id="pub-count"></p>
+      </div>
+      <div class="tabs" role="group" aria-label="Filter publications" id="tabs"></div>
+      <ol class="pubs" id="pub-list"></ol>
+      <a class="btn more" id="scholar-more" target="_blank" rel="noopener">See all publications on Google Scholar</a>
+    </div>
+  </section>
+
+  <section id="career">
+    <div class="wrap two">
+      <div><h3>Experience</h3><ol class="tl" id="experience"></ol></div>
+      <div><h3>Education</h3><ol class="tl" id="education"></ol></div>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <div class="wrap two">
+      <div><h3>Courses taught</h3><ul class="courses" id="courses"></ul></div>
+      <div><h3>Honors &amp; awards</h3><ul class="awards" id="awards"></ul></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <h2>Get in touch</h2>
+        <p style="color:var(--muted); max-width:46ch; margin:12px 0 0" data-f="contactNote"></p>
+        <a class="big" id="email-big"></a>
+      </div>
+      <dl id="contact-list"></dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span id="copyright"></span>
+    <span data-f="university"></span>
+  </div>
+</footer>
+
+<script src="content.js"></script>
+<script>
+(function () {
+  const S = SITE;
+  const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const $ = id => document.getElementById(id);
+  const list = a => Array.isArray(a) ? a : [];
+
+  document.title = S.name + " – " + S.university;
+  document.querySelectorAll("[data-f]").forEach(el => { el.textContent = S[el.dataset.f] || ""; });
+
+  // Hero
+  $("hero-actions").innerHTML =
+    `<a class="btn primary" href="mailto:${esc(S.email)}">Email me</a>` +
+    list(S.links).slice(0, 2).map(l => `<a class="btn" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("");
+  if (S.now) $("now").innerHTML = `<span>${esc(S.now)}</span>` + (list(S.projects).length ? ` <a href="#projects">See project</a>` : "");
+  else $("now").remove();
+
+  // About
+  $("photo").src = S.photo; $("photo").alt = "Portrait of " + S.name;
+  $("about-text").innerHTML = list(S.about).map(p => `<p>${esc(p)}</p>`).join("");
+  $("facts").innerHTML = list(S.facts).map(f => `<div><dt>${esc(f.label)}</dt><dd>${esc(f.value)}</dd></div>`).join("");
+
+  const FIGS = {"solar": "<svg viewBox=\"0 0 360 185\" role=\"img\" aria-label=\"Sunlight falling on a layered perovskite solar cell\"><defs><marker id=\"arr\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto\"><path d=\"M0 0 L10 5 L0 10 z\" fill=\"var(--gold-bar)\"/></marker></defs><circle cx=\"36\" cy=\"34\" r=\"15\" fill=\"var(--gold-bar)\"/><g stroke=\"var(--gold-bar)\" stroke-width=\"2.5\" stroke-linecap=\"round\"><line x1=\"57.0\" y1=\"34.0\" x2=\"65.0\" y2=\"34.0\"/><line x1=\"50.8\" y1=\"48.8\" x2=\"56.5\" y2=\"54.5\"/><line x1=\"36.0\" y1=\"55.0\" x2=\"36.0\" y2=\"63.0\"/><line x1=\"21.2\" y1=\"48.8\" x2=\"15.5\" y2=\"54.5\"/><line x1=\"15.0\" y1=\"34.0\" x2=\"7.0\" y2=\"34.0\"/><line x1=\"21.2\" y1=\"19.2\" x2=\"15.5\" y2=\"13.5\"/><line x1=\"36.0\" y1=\"13.0\" x2=\"36.0\" y2=\"5.0\"/><line x1=\"50.8\" y1=\"19.2\" x2=\"56.5\" y2=\"13.5\"/></g><g stroke=\"var(--gold-bar)\" stroke-width=\"2\" fill=\"none\" stroke-dasharray=\"4 4\"><path d=\"M80 14 L96 60\" marker-end=\"url(#arr)\"/><path d=\"M122 14 L138 60\" marker-end=\"url(#arr)\"/><path d=\"M164 14 L180 60\" marker-end=\"url(#arr)\"/></g><rect x=\"70\" y=\"68\" width=\"150\" height=\"11\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><text x=\"228\" y=\"77.5\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">FTO glass</text><rect x=\"70\" y=\"81\" width=\"150\" height=\"11\" fill=\"var(--surface)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><text x=\"228\" y=\"90.5\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">ETL</text><rect x=\"70\" y=\"94\" width=\"150\" height=\"34\" fill=\"var(--gold-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><rect x=\"70\" y=\"130\" width=\"150\" height=\"11\" fill=\"var(--surface)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><text x=\"228\" y=\"139.5\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">HTL</text><rect x=\"70\" y=\"143\" width=\"150\" height=\"12\" fill=\"var(--gold-bar)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><text x=\"228\" y=\"153.0\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">Metal contact</text><text x=\"228\" y=\"115\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\" font-weight=\"600\" fill=\"var(--ink)\">Perovskite</text><path d=\"M86 99 L95 111 L86 123 L77 111 Z\" fill=\"var(--primary)\" fill-opacity=\".18\" stroke=\"var(--primary)\" stroke-width=\"1\"/><path d=\"M108 99 L117 111 L108 123 L99 111 Z\" fill=\"var(--primary)\" fill-opacity=\".18\" stroke=\"var(--primary)\" stroke-width=\"1\"/><path d=\"M130 99 L139 111 L130 123 L121 111 Z\" fill=\"var(--primary)\" fill-opacity=\".18\" stroke=\"var(--primary)\" stroke-width=\"1\"/><path d=\"M152 99 L161 111 L152 123 L143 111 Z\" fill=\"var(--primary)\" fill-opacity=\".18\" stroke=\"var(--primary)\" stroke-width=\"1\"/><path d=\"M174 99 L183 111 L174 123 L165 111 Z\" fill=\"var(--primary)\" fill-opacity=\".18\" stroke=\"var(--primary)\" stroke-width=\"1\"/><path d=\"M196 99 L205 111 L196 123 L187 111 Z\" fill=\"var(--primary)\" fill-opacity=\".18\" stroke=\"var(--primary)\" stroke-width=\"1\"/><path d=\"M218 99 L227 111 L218 123 L209 111 Z\" fill=\"var(--primary)\" fill-opacity=\".18\" stroke=\"var(--primary)\" stroke-width=\"1\"/><text x=\"70\" y=\"178\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">Lead-free perovskite solar cell</text></svg>", "nano": "<svg viewBox=\"0 0 360 185\" role=\"img\" aria-label=\"MoS2 nanoflower decorated with nanoparticles and a supercapacitor charge-discharge curve\"><ellipse cx=\"82\" cy=\"50\" rx=\"9\" ry=\"30\" transform=\"rotate(0.0 82 80)\" fill=\"var(--primary)\" fill-opacity=\".10\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><ellipse cx=\"82\" cy=\"50\" rx=\"9\" ry=\"30\" transform=\"rotate(25.7 82 80)\" fill=\"var(--primary)\" fill-opacity=\".10\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><ellipse cx=\"82\" cy=\"50\" rx=\"9\" ry=\"30\" transform=\"rotate(51.4 82 80)\" fill=\"var(--primary)\" fill-opacity=\".10\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><ellipse cx=\"82\" cy=\"50\" rx=\"9\" ry=\"30\" transform=\"rotate(77.1 82 80)\" fill=\"var(--primary)\" fill-opacity=\".10\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><ellipse cx=\"82\" cy=\"50\" rx=\"9\" ry=\"30\" transform=\"rotate(102.9 82 80)\" fill=\"var(--primary)\" fill-opacity=\".10\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><ellipse cx=\"82\" cy=\"50\" rx=\"9\" ry=\"30\" transform=\"rotate(128.6 82 80)\" fill=\"var(--primary)\" fill-opacity=\".10\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><ellipse cx=\"82\" cy=\"50\" rx=\"9\" ry=\"30\" transform=\"rotate(154.3 82 80)\" fill=\"var(--primary)\" fill-opacity=\".10\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><ellipse cx=\"82\" cy=\"50\" rx=\"9\" ry=\"30\" transform=\"rotate(180.0 82 80)\" fill=\"var(--primary)\" fill-opacity=\".10\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><ellipse cx=\"82\" cy=\"50\" rx=\"9\" ry=\"30\" transform=\"rotate(205.7 82 80)\" fill=\"var(--primary)\" fill-opacity=\".10\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><ellipse cx=\"82\" cy=\"50\" rx=\"9\" ry=\"30\" transform=\"rotate(231.4 82 80)\" fill=\"var(--primary)\" fill-opacity=\".10\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><ellipse cx=\"82\" cy=\"50\" rx=\"9\" ry=\"30\" transform=\"rotate(257.1 82 80)\" fill=\"var(--primary)\" fill-opacity=\".10\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><ellipse cx=\"82\" cy=\"50\" rx=\"9\" ry=\"30\" transform=\"rotate(282.9 82 80)\" fill=\"var(--primary)\" fill-opacity=\".10\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><ellipse cx=\"82\" cy=\"50\" rx=\"9\" ry=\"30\" transform=\"rotate(308.6 82 80)\" fill=\"var(--primary)\" fill-opacity=\".10\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><ellipse cx=\"82\" cy=\"50\" rx=\"9\" ry=\"30\" transform=\"rotate(334.3 82 80)\" fill=\"var(--primary)\" fill-opacity=\".10\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><ellipse cx=\"82\" cy=\"62\" rx=\"6\" ry=\"18\" transform=\"rotate(18.0 82 80)\" fill=\"var(--primary)\" fill-opacity=\".14\" stroke=\"var(--primary)\" stroke-width=\"1\"/><ellipse cx=\"82\" cy=\"62\" rx=\"6\" ry=\"18\" transform=\"rotate(54.0 82 80)\" fill=\"var(--primary)\" fill-opacity=\".14\" stroke=\"var(--primary)\" stroke-width=\"1\"/><ellipse cx=\"82\" cy=\"62\" rx=\"6\" ry=\"18\" transform=\"rotate(90.0 82 80)\" fill=\"var(--primary)\" fill-opacity=\".14\" stroke=\"var(--primary)\" stroke-width=\"1\"/><ellipse cx=\"82\" cy=\"62\" rx=\"6\" ry=\"18\" transform=\"rotate(126.0 82 80)\" fill=\"var(--primary)\" fill-opacity=\".14\" stroke=\"var(--primary)\" stroke-width=\"1\"/><ellipse cx=\"82\" cy=\"62\" rx=\"6\" ry=\"18\" transform=\"rotate(162.0 82 80)\" fill=\"var(--primary)\" fill-opacity=\".14\" stroke=\"var(--primary)\" stroke-width=\"1\"/><ellipse cx=\"82\" cy=\"62\" rx=\"6\" ry=\"18\" transform=\"rotate(198.0 82 80)\" fill=\"var(--primary)\" fill-opacity=\".14\" stroke=\"var(--primary)\" stroke-width=\"1\"/><ellipse cx=\"82\" cy=\"62\" rx=\"6\" ry=\"18\" transform=\"rotate(234.0 82 80)\" fill=\"var(--primary)\" fill-opacity=\".14\" stroke=\"var(--primary)\" stroke-width=\"1\"/><ellipse cx=\"82\" cy=\"62\" rx=\"6\" ry=\"18\" transform=\"rotate(270.0 82 80)\" fill=\"var(--primary)\" fill-opacity=\".14\" stroke=\"var(--primary)\" stroke-width=\"1\"/><ellipse cx=\"82\" cy=\"62\" rx=\"6\" ry=\"18\" transform=\"rotate(306.0 82 80)\" fill=\"var(--primary)\" fill-opacity=\".14\" stroke=\"var(--primary)\" stroke-width=\"1\"/><ellipse cx=\"82\" cy=\"62\" rx=\"6\" ry=\"18\" transform=\"rotate(342.0 82 80)\" fill=\"var(--primary)\" fill-opacity=\".14\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"82\" cy=\"80\" r=\"7\" fill=\"var(--primary)\"/><circle cx=\"84.3\" cy=\"105.6\" r=\"3.5\" fill=\"var(--gold-bar)\"/><circle cx=\"57.0\" cy=\"83.3\" r=\"3\" fill=\"var(--gold-bar)\"/><circle cx=\"37.1\" cy=\"111.9\" r=\"3\" fill=\"var(--gold-bar)\"/><circle cx=\"89.3\" cy=\"120.7\" r=\"3.5\" fill=\"var(--gold-bar)\"/><circle cx=\"91.6\" cy=\"29.1\" r=\"3.5\" fill=\"var(--gold-bar)\"/><circle cx=\"94.3\" cy=\"134.0\" r=\"4\" fill=\"var(--gold-bar)\"/><circle cx=\"99.7\" cy=\"32.4\" r=\"3\" fill=\"var(--gold-bar)\"/><circle cx=\"98.5\" cy=\"107.9\" r=\"4\" fill=\"var(--gold-bar)\"/><circle cx=\"133.0\" cy=\"67.2\" r=\"3.5\" fill=\"var(--gold-bar)\"/><circle cx=\"119.5\" cy=\"102.7\" r=\"4\" fill=\"var(--gold-bar)\"/><circle cx=\"58.4\" cy=\"100.0\" r=\"3\" fill=\"var(--gold-bar)\"/><circle cx=\"57.1\" cy=\"84.2\" r=\"4\" fill=\"var(--gold-bar)\"/><circle cx=\"94.0\" cy=\"61.2\" r=\"3.5\" fill=\"var(--gold-bar)\"/><circle cx=\"33.7\" cy=\"56.4\" r=\"4\" fill=\"var(--gold-bar)\"/><circle cx=\"94.6\" cy=\"115.1\" r=\"3.5\" fill=\"var(--gold-bar)\"/><circle cx=\"56.8\" cy=\"91.7\" r=\"3.5\" fill=\"var(--gold-bar)\"/><text x=\"82\" y=\"166\" text-anchor=\"middle\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">MoS₂ nanoflower</text><text x=\"82\" y=\"181\" text-anchor=\"middle\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">+ CuO / MnS</text><path d=\"M192 30 L192 130 L346 130\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.2\"/><path d=\"M192.0 130.0 L217.0 38.0 L242.0 130.0 L267.0 38.0 L292.0 130.0 L317.0 38.0 L342.0 130.0\" fill=\"none\" stroke=\"var(--primary)\" stroke-width=\"2\" stroke-linejoin=\"round\"/><text x=\"269.0\" y=\"150\" text-anchor=\"middle\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">Charge–discharge</text><text x=\"269.0\" y=\"166\" text-anchor=\"middle\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\" fill=\"var(--gold)\" font-weight=\"600\">up to 351 F g⁻¹</text></svg>", "corrosion": "<svg viewBox=\"0 0 360 185\" role=\"img\" aria-label=\"Plant inhibitor molecules lying flat on a steel surface and blocking acid ions\"><path d=\"M20 14 C 58 12 66 50 44 66 C 22 60 10 34 20 14 Z\" fill=\"var(--primary)\" fill-opacity=\".15\" stroke=\"var(--primary)\" stroke-width=\"1.5\"/><path d=\"M23 18 C 32 34 40 50 44 66\" fill=\"none\" stroke=\"var(--primary)\" stroke-width=\"1.2\"/><text x=\"64\" y=\"44\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">Dillenia</text><circle cx=\"110\" cy=\"24\" r=\"12\" fill=\"var(--surface)\" stroke=\"var(--muted)\" stroke-width=\"1\"/><text x=\"110\" y=\"28.5\" text-anchor=\"middle\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">H⁺</text><circle cx=\"170\" cy=\"52\" r=\"12\" fill=\"var(--surface)\" stroke=\"var(--muted)\" stroke-width=\"1\"/><text x=\"170\" y=\"56.5\" text-anchor=\"middle\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">Cl⁻</text><circle cx=\"230\" cy=\"22\" r=\"12\" fill=\"var(--surface)\" stroke=\"var(--muted)\" stroke-width=\"1\"/><text x=\"230\" y=\"26.5\" text-anchor=\"middle\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">H⁺</text><circle cx=\"290\" cy=\"50\" r=\"12\" fill=\"var(--surface)\" stroke=\"var(--muted)\" stroke-width=\"1\"/><text x=\"290\" y=\"54.5\" text-anchor=\"middle\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">Cl⁻</text><circle cx=\"335\" cy=\"20\" r=\"12\" fill=\"var(--surface)\" stroke=\"var(--muted)\" stroke-width=\"1\"/><text x=\"335\" y=\"24.5\" text-anchor=\"middle\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">H⁺</text><path d=\"M170 65 L170 88\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"3 3\"/><path d=\"M163 92 L177 92\" stroke=\"var(--ink)\" stroke-width=\"2.2\" stroke-linecap=\"round\"/><path d=\"M290 63 L290 88\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"3 3\"/><path d=\"M283 92 L297 92\" stroke=\"var(--ink)\" stroke-width=\"2.2\" stroke-linecap=\"round\"/><path d=\"M62.5 122.5 L53.0 128.0 L43.5 122.5 L43.5 111.5 L53.0 106.0 L62.5 111.5 Z\" fill=\"var(--gold-soft)\" stroke=\"var(--gold)\" stroke-width=\"1.6\"/><path d=\"M84.5 122.5 L75.0 128.0 L65.5 122.5 L65.5 111.5 L75.0 106.0 L84.5 111.5 Z\" fill=\"var(--gold-soft)\" stroke=\"var(--gold)\" stroke-width=\"1.6\"/><path d=\"M178.5 122.5 L169.0 128.0 L159.5 122.5 L159.5 111.5 L169.0 106.0 L178.5 111.5 Z\" fill=\"var(--gold-soft)\" stroke=\"var(--gold)\" stroke-width=\"1.6\"/><path d=\"M200.5 122.5 L191.0 128.0 L181.5 122.5 L181.5 111.5 L191.0 106.0 L200.5 111.5 Z\" fill=\"var(--gold-soft)\" stroke=\"var(--gold)\" stroke-width=\"1.6\"/><path d=\"M294.5 122.5 L285.0 128.0 L275.5 122.5 L275.5 111.5 L285.0 106.0 L294.5 111.5 Z\" fill=\"var(--gold-soft)\" stroke=\"var(--gold)\" stroke-width=\"1.6\"/><path d=\"M316.5 122.5 L307.0 128.0 L297.5 122.5 L297.5 111.5 L307.0 106.0 L316.5 111.5 Z\" fill=\"var(--gold-soft)\" stroke=\"var(--gold)\" stroke-width=\"1.6\"/><circle cx=\"14\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"36\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"58\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"80\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"102\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"124\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"146\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"168\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"190\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"212\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"234\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"256\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"278\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"300\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"322\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"344\" cy=\"140\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"25\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"47\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"69\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"91\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"113\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"135\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"157\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"179\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"201\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"223\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"245\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"267\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"289\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"311\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><circle cx=\"333\" cy=\"154\" r=\"8\" fill=\"var(--primary-soft)\" stroke=\"var(--primary)\" stroke-width=\"1\"/><text x=\"8\" y=\"178\" font-family=\"Public Sans, system-ui, sans-serif\" font-size=\"12.5\" fill=\"var(--muted)\">Inhibitor film on mild steel, Fe(110)</text></svg>"};
+
+  // Research themes
+  $("themes").innerHTML = list(S.themes).map(t => `
+    <div class="theme">
+      ${FIGS[t.figure] ? `<figure class="theme-fig">${FIGS[t.figure]}</figure>` : ""}
+      <h3>${esc(t.name)}</h3>
+      <p class="intro">${esc(t.intro)}</p>
+      ${list(t.items).map(i => `<div class="topic${/funded by/i.test(i.text) ? " funded" : ""}"><h4>${esc(i.title)}</h4><p>${esc(i.text)}</p></div>`).join("")}
+    </div>`).join("");
+
+  // Efficiency chart (scale 0–40 %)
+  const E = list(S.efficiencies);
+  if (E.length) {
+    const MAX = 40, pct = v => Math.min(v, MAX) / MAX * 100, SQ = 33.7;
+    $("chart").innerHTML = E.map(e => `
+      <div class="row">
+        <div class="lab">${esc(e.label)}<small>${esc(e.source)}</small></div>
+        <div class="track">
+          <div class="barfill ${e.kind === "device" ? "device" : "slme"}" style="width:${pct(e.value)}%">${esc(e.value)}%</div>
+          <div class="sq" style="left:${pct(SQ)}%"></div>
+        </div>
+      </div>`).join("");
+    $("ticks").innerHTML = [0, 10, 20, 30, 40].map(t => `<span style="left:${pct(t)}%">${t}%</span>`).join("");
+  } else $("chart-block").remove();
+
+  // Methods
+  const M = S.methods || {};
+  const mrow = a => list(a).map(m => `<div class="m"><dt>${esc(m.name)}</dt><dd>${esc(m.use)}</dd></div>`).join("");
+  $("m-comp").innerHTML = mrow(M.computational);
+  $("m-exp").innerHTML = mrow(M.experimental);
+
+  // Projects
+  const P = list(S.projects);
+  if (P.length) {
+    const months = Array.from({ length: 12 }, (_, i) => `<span>${i + 1}</span>`).join("");
+    $("project-list").innerHTML = P.map(p => `
+      <article class="project">
+        <div class="p-top"><span class="status">${esc(p.status)}</span><span>${esc(p.funder)}</span></div>
+        <h3>${esc(p.title)}</h3>
+        <dl class="p-meta">
+          <div><dt>My role</dt><dd>${esc(p.role)}</dd></div>
+          <div><dt>Team</dt><dd>${esc(p.team)}</dd></div>
+          <div><dt>Grant number</dt><dd>${esc(p.grant)}</dd></div>
+          <div><dt>Status</dt><dd>${esc(p.status)}</dd></div>
+          <div><dt>Budget</dt><dd>${esc(p.budget)}</dd></div>
+          <div><dt>Duration</dt><dd>${esc(p.period)}</dd></div>
+        </dl>
+        <div class="p-body">
+          <p>${esc(p.summary)}</p>
+          <div><h4>Goals</h4><ul class="goals">${list(p.goals).map(g => `<li>${esc(g)}</li>`).join("")}</ul></div>
+        </div>
+        ${list(p.phases).length ? `
+        <div class="gantt">
+          <h4>Work plan</h4>
+          ${p.phases.map(f => `<div class="g-row"><span>${esc(f.name)}</span><div class="g-track"><div class="g-bar" style="grid-column:${+f.start} / ${+f.end + 1}"></div></div></div>`).join("")}
+          <div class="g-axis"><span style="text-align:right">Month</span><div class="months">${months}</div></div>
+        </div>` : ""}
+      </article>`).join("");
+  } else { $("projects").remove(); document.querySelector('nav a[href="#projects"]').parentElement.remove(); }
+
+  // Publications (text years like "Under review" first, then newest)
+  const nameRe = /(Md\.?\s*Jahidul\s+Islam|MJ\s+Islam)/g;
+  const pubs = list(S.publications).slice().sort((a, b) => {
+    const ya = Number(a.year), yb = Number(b.year);
+    if (isNaN(ya) && !isNaN(yb)) return -1;
+    if (!isNaN(ya) && isNaN(yb)) return 1;
+    return (yb || 0) - (ya || 0);
+  });
+  const LABEL = { journal: "Journal", conference: "Conference", thesis: "Thesis" };
+  $("pub-list").innerHTML = pubs.map(p => {
+    const title = p.link ? `<a href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.title)}</a>` : esc(p.title);
+    return `<li class="pub" data-k="${esc(p.type)}">
+      <span class="yr">${esc(p.year)}</span>
+      <div><h3>${title}</h3>
+        <p class="au">${esc(p.authors).replace(nameRe, "<b>$1</b>")}</p>
+        <p class="ven">${esc(p.venue)} <span class="kind">${esc(LABEL[p.type] || p.type)}</span></p>
+        ${p.summary ? `<p class="sum">${esc(p.summary)}</p>` : ""}
+        ${p.finding ? `<p class="find"><b>Key result:</b> ${esc(p.finding)}</p>` : ""}
+      </div></li>`;
+  }).join("");
+  const counts = {}; pubs.forEach(p => counts[p.type] = (counts[p.type] || 0) + 1);
+  $("pub-count").textContent = `${pubs.length} publications, newest first.`;
+  const types = ["all", ...Object.keys(LABEL).filter(t => counts[t])];
+  $("tabs").innerHTML = types.map((t, i) =>
+    `<button class="tab" data-f="${t}" aria-pressed="${i === 0}">${t === "all" ? "All" : LABEL[t]} (${t === "all" ? pubs.length : counts[t]})</button>`).join("");
+  const tabs = document.querySelectorAll(".tab"), items = document.querySelectorAll(".pub");
+  tabs.forEach(tb => tb.addEventListener("click", () => {
+    tabs.forEach(x => x.setAttribute("aria-pressed", x === tb));
+    items.forEach(p => { p.hidden = !(tb.dataset.f === "all" || p.dataset.k === tb.dataset.f); });
+  }));
+  const scholar = list(S.links).find(l => /scholar/i.test(l.label));
+  if (scholar) $("scholar-more").href = scholar.url; else $("scholar-more").remove();
+
+  // Career
+  const tl = arr => list(arr).map(e => `<li${e.current ? ' class="now-item"' : ""}><div class="when">${esc(e.when)}</div><div class="what">${esc(e.title)}</div><div class="where">${esc(e.place)}</div></li>`).join("");
+  $("experience").innerHTML = tl(S.experience);
+  $("education").innerHTML = tl(S.education);
+
+  // Teaching & awards
+  // Course numbers ending in an odd digit are theory, even are sessional
+  const crow = c => `<li><span class="code">${esc(c.code)}</span><span>${esc(c.title)}<span class="yrs">${esc(c.years)}</span></span></li>`;
+  const lastDigit = c => +(String(c.code).match(/(\d)\D*$/) || [0, 1])[1];
+  const theory = list(S.courses).filter(c => lastDigit(c) % 2 === 1);
+  const sessional = list(S.courses).filter(c => lastDigit(c) % 2 === 0);
+  $("courses").innerHTML =
+    (theory.length ? `<li class="c-group">Theory (${theory.length})</li>` + theory.map(crow).join("") : "") +
+    (sessional.length ? `<li class="c-group">Sessional (${sessional.length})</li>` + sessional.map(crow).join("") : "");
+  $("awards").innerHTML = list(S.awards).map(a => `<li><span>${esc(a.title)}<span class="by">${esc(a.by)}</span></span><span class="y">${esc(a.year)}</span></li>`).join("");
+
+  // Contact
+  $("email-big").href = "mailto:" + S.email; $("email-big").textContent = S.email;
+  let c = "";
+  if (S.phone)   c += `<dt>Phone</dt><dd>${esc(S.phone)}</dd>`;
+  if (S.office)  c += `<dt>Office</dt><dd>${esc(S.office)}</dd>`;
+  c += `<dt>Department</dt><dd>${esc(S.department)}</dd>`;
+  if (S.address) c += `<dt>Address</dt><dd>${esc(S.address)}</dd>`;
+  if (list(S.links).length) c += `<dt>Profiles</dt><dd>${S.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join(", ")}</dd>`;
+  $("contact-list").innerHTML = c;
+  $("copyright").textContent = "© " + new Date().getFullYear() + " " + S.name;
+
+  // Mobile menu
+  const btn = document.querySelector(".menu-btn"), nav = $("nav");
+  btn.addEventListener("click", () => btn.setAttribute("aria-expanded", nav.classList.toggle("open")));
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { nav.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }));
+})();
+</script>
+</body>
+</html>
